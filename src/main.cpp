@@ -3,23 +3,10 @@
 #include <vector>
 #include <string>
 
-int simulateFIFO(int k, const std::vector<int>& req) {
-    // stub def
-    return -1;
-}
-
-int simulateLRU(int k, const std::vector<int>& req) {
-    // stub def
-    return -1;
-}
-
-int simulateOPTFF(int k, const std::vector<int>& req) {
-    // stub def
-    return -1;
-}
+#include "simulator.h"
 
 int main(int argc, char* argv[]) {
-    // verify arg count
+    // verify exact arg count
     if (argc != 2) {
         std::cerr << "Usage: " << argv[0] << " <input_filename>\n";
         std::cerr << "Example: " << argv[0] << " data/example.in\n";
@@ -46,7 +33,7 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // read exactly m req
+    // read exactly m requests
     std::vector<int> req(m);
     for (int i = 0; i < m; ++i) {
         if (!(infile >> req[i])) {

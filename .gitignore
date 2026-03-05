@@ -4,6 +4,7 @@
 # Executables
 *.out
 cache_sim
+tests/test_small_bin
 
 # OS generated files
 .DS_Store
