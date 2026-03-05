@@ -47,3 +47,19 @@ OPTFF : <misses>
 - Inputs are strictly separated by whitespace.
 - The cache size limit `k` must fulfill `k >= 1`.
 - A miss occurs exclusively when a requested integer is not present in the current cache footprint. On a miss, the algorithm automatically inserts it. If the cache is full relative to its limit `k`, space is reclaimed according to the explicit replacement policy (FIFO, LRU).
+
+##  Verification Example
+A standard sample input has been provided in `data/example.in` alongside its expected output in `data/example.out`.
+
+To quickly verify the program's correctness against the expected behavior, use `diff`:
+
+```bash
+# 1. Compile the simulator
+g++ -std=c++17 -O3 -Wall -Wextra src/main.cpp src/simulator.cpp -o cache_sim
+
+# 2. Run the executable and pipe the results to a temporary file
+./cache_sim data/example.in > my_output.txt
+
+# 3. Verify exactly matching outputs (no output means successful match)
+diff my_output.txt data/example.out
+```
