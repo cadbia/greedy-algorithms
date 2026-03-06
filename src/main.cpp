@@ -22,6 +22,9 @@ int main(int argc, char* argv[]) {
     }
 
     // read first line: k and m
+    // k is cache capacity (k >= 1)
+    // m is number of requests
+    // req is sequence of integer IDs (r_1, ..., r_m)
     int k, m;
     if (!(infile >> k >> m)) {
         std::cerr << "Error: Invalid file format. Expected k and m.\n";
@@ -43,8 +46,8 @@ int main(int argc, char* argv[]) {
     }
 
     // run simulators and output strings
-    std::cout << "FIFO : " << simulateFIFO(k, req) << "\n";
-    std::cout << "LRU : " << simulateLRU(k, req) << "\n";
+    std::cout << "FIFO  : " << simulateFIFO(k, req) << "\n";
+    std::cout << "LRU   : " << simulateLRU(k, req) << "\n";
     std::cout << "OPTFF : " << simulateOPTFF(k, req) << "\n";
 
     return 0;

@@ -5,6 +5,8 @@
 #include <deque>
 #include <list>
 
+using namespace std;
+
 int simulateFIFO(int k, const std::vector<int>& req) {
     std::unordered_set<int> cache;
     std::deque<int> q;
@@ -56,6 +58,44 @@ int simulateLRU(int k, const std::vector<int>& req) {
 }
 
 int simulateOPTFF(int k, const std::vector<int>& req) {
-    // Stub definition
-    return -1;
+    std::unordered_set<int> cache;
+    int misses = 0;
+
+    for (int i = 0; i < req.size(); i++) {
+        int r = req[i];
+        if (cache.find(r) == cache.end()) {
+            misses++;
+            if (cache.size() < k) {
+                cache.insert(r);
+            }
+            else {
+                int sacrifice = -1;
+                int farthestNextUse = -1;
+
+                for (int c : cache) {
+                    int nextUse = -1;
+
+                    for (int j = i + 1; j < req.size(); j++) {
+                        if (req[j] == c) {
+                            nextUse = j;
+                            break;
+                        }
+                    }
+                    // If there's a value that's never used again just use that
+                    if (nextUse == -1) {
+                        sacrifice = c;
+                        break;
+                    }
+                    // Value farthest in future
+                    if (nextUse > farthestNextUse) {
+                        farthestNextUse = nextUse;
+                        sacrifice = c;
+                    }
+                }
+                cache.erase(sacrifice);
+                cache.insert(r);
+            }
+        }
+    }
+    return misses;
 }
