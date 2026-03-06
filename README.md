@@ -106,7 +106,7 @@ For k = 3, investigate whether there exists a request sequence for which OPTFF i
 
 **Explanation**
 
-OPTFF is able to keep `1` and `2` in the cache at positions 4, 5, 7, and 8, while FIFO is forced to discard them right before they are needed again.  
+OPTFF is able to keep 1 and 2 in the cache at positions 4, 5, 7, and 8, while FIFO is forced to discard them right before they are needed again.  
 LRU behaves similarly to FIFO because the cache size is small and the request pattern changes frequently, but it performs slightly worse in this sequence.
 
 ## Question 3: Prove OPTFF is Optimal
