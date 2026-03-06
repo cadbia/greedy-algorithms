@@ -34,6 +34,34 @@ int main() {
     // 1 (hit) -> [1, 4, 3]
     // misses = 3 + 0 + 1 + 0 = 4
     assert(simulateLRU(3, req3) == 4);
+    
+    // Test 4: OPTFF simple case
+    // cache size > requests
+    std::vector<int> req4 = {1,2,3};
+    assert(simulateOPTFF(5, req4) == 3);
+
+    // Test 5: Repeating sequence
+    std::vector<int> req5 = {1,2,1,2,1,2};
+
+    assert(simulateFIFO(2, req5) == 2);
+    assert(simulateLRU(2, req5) == 2);
+    assert(simulateOPTFF(2, req5) == 2);
+
+    // Test 6: Validity test case from online resource
+    // geeksforgeeks.org/operating-systems/page-replacement-algorithms-in-operating-systems/
+    std::vector<int> req6 = {7,0,1,2,0,3,0,4,2,3,0,3,2};
+    assert(simulateOPTFF(3, req6) == 7);
+
+    // Test 7: Item never used again
+    std::vector<int> req7 = {1,2,3,4,2,3,4};
+
+    assert(simulateOPTFF(3, req7) == 4);
+    // when 4 arrives OPT should evict 1 since it never appears again
+
+    // Test 8: Long reuse distance
+    std::vector<int> req8 = {1,2,3,4,1,2,3,4};
+
+    assert(simulateOPTFF(3, req8) == 5);
 
     std::cout << "All small tests passed!\n";
     return 0;
