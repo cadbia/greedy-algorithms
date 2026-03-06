@@ -2,6 +2,10 @@
 
 This is a C++ project that simulates cache replacement policies (FIFO, LRU, and soon OPTFF), reporting the total number of cache misses. Note that the OPTFF (Optimal Furthest in Future) implementation is pending.
 
+Caden Bialow UFID: 86822533
+
+Jake Qiu UFID: 41352615
+
 ## Repository Structure
 - `src/` : Source code (`main.cpp`, `simulator.h`, `simulator.cpp`).
 - `data/` : Directory intended for input data files and request sequences.

@@ -49,6 +49,13 @@ int main(int argc, char* argv[]) {
     std::cout << "FIFO  : " << simulateFIFO(k, req) << "\n";
     std::cout << "LRU   : " << simulateLRU(k, req) << "\n";
     std::cout << "OPTFF : " << simulateOPTFF(k, req) << "\n";
+    
+    filename = filename.substr(0, filename.find_last_of('.'));
+    std::ofstream out(filename + ".out");
+    out << "FIFO  : " << simulateFIFO(k, req) << "\n";
+    out << "LRU   : " << simulateLRU(k, req) << "\n";
+    out << "OPTFF : " << simulateOPTFF(k, req) << "\n";
+    out.close();
 
     return 0;
 }
